@@ -17,7 +17,7 @@
         <param-value>
             classpath:/webapp-beans.xml,
             classpath:/core-beans.xml,
-            classpath:/spring-security-conf.xml
+            classpath:/spring-security-beans.xml
         </param-value>
     </context-param>
 
@@ -34,7 +34,7 @@
             <param-value>
                 classpath:/webapp-beans.xml,
                 classpath:/core-beans.xml,
-                classpath:/spring-security-conf.xml
+                classpath:/spring-security-beans.xml
             </param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
