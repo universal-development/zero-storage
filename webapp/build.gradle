@@ -46,10 +46,12 @@ war {
     eachFile {
         if (it.name == 'build.jsp') {
             it.filter(ReplaceTokens, tokens: [
-                    "BUILD_ID" : System.getProperty("BUILD_ID") + "",
-                    "GIT_COMMIT" : System.getProperty("GIT_COMMIT") + "",
-                    "BUILD_NUMBER" : System.getProperty("BUILD_NUMBER") + "",
-                    "PROJECT_VERSION" : project.version
+                    'build_id' : System.getProperty("BUILD_ID") + "",
+                    'git_commit' : System.getProperty("GIT_COMMIT") + "",
+                    'build_number' : System.getProperty("BUILD_NUMBER") + "",
+                    'version' : project.version,
+                    'name' : project.name,
+                    'group' : project.group,
             ])
         }
     }
