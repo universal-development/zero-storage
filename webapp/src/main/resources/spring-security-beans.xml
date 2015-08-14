@@ -6,9 +6,9 @@
                http://www.springframework.org/schema/security/spring-security.xsd">
 
     <http auto-config="true">
-        <intercept-url pattern="/jmx/**" access="ROLE_ADMIN" />
-        <intercept-url pattern="/build" access="ROLE_ADMIN" />
-        <intercept-url pattern="/logs**" access="ROLE_ADMIN" />
+        <intercept-url pattern="/admin/jmx/**" access="ROLE_ADMIN" />
+        <intercept-url pattern="/admin/build" access="ROLE_ADMIN" />
+        <intercept-url pattern="/admin/logs**" access="ROLE_ADMIN" />
     </http>
 
     <authentication-manager>

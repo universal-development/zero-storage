@@ -64,10 +64,14 @@
         </servlet-class>
     </servlet>
 
+    <servlet-mapping>
+        <servlet-name>JmxMiniConsoleServlet</servlet-name>
+        <url-pattern>/admin/jmx</url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>JmxMiniConsoleServlet</servlet-name>
-        <url-pattern>/jmx/*</url-pattern>
+        <url-pattern>/admin/jmx/*</url-pattern>
     </servlet-mapping>
 
     <!-- Logback logs view -->
@@ -78,7 +82,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ViewStatusMessages</servlet-name>
-        <url-pattern>/logs</url-pattern>
+        <url-pattern>/admin/logs</url-pattern>
     </servlet-mapping>
 
     <!-- Build information file -->
@@ -89,7 +93,7 @@
 
     <servlet-mapping>
         <servlet-name>build</servlet-name>
-        <url-pattern>/build</url-pattern>
+        <url-pattern>/admin/build</url-pattern>
     </servlet-mapping>
 
 </web-app>
