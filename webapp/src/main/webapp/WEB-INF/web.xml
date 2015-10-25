@@ -21,6 +21,11 @@
         </param-value>
     </context-param>
 
+    <context-param>
+        <param-name>application.name</param-name>
+        <param-value>webapp</param-value> <!-- global application name -->
+    </context-param>
+
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
