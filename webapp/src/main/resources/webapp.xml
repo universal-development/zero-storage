@@ -12,9 +12,11 @@
         Webapp specific beans.
     </description>
 
+    <import resource="classpath*:*-beans.xml"/>
+    <context:component-scan base-package="com.unidev" />
+
     <mvc:annotation-driven/>
     <context:annotation-config/>
-    <context:component-scan base-package="com.unidev" />
 
     <mvc:resources mapping="/static/**" location="/WEB-INF/static/" />
 

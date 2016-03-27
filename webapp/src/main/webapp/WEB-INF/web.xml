@@ -10,26 +10,10 @@
 
     <distributable/>
 
-    <!-- Spring MVC setup -->
-
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>
-            classpath:/webapp-beans.xml,
-            classpath:/core-beans.xml,
-            classpath:/spring-security-beans.xml
-        </param-value>
-    </context-param>
-
     <context-param>
         <param-name>application.name</param-name>
         <param-value>webapp</param-value> <!-- global application name -->
     </context-param>
-
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-
 
     <servlet>
         <servlet-name>mvc-dispatcher</servlet-name>
@@ -37,9 +21,8 @@
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>
-                classpath:/webapp-beans.xml,
-                classpath:/core-beans.xml,
-                classpath:/spring-security-beans.xml
+                classpath:/webapp.xml,
+                classpath:/spring-security.xml
             </param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
