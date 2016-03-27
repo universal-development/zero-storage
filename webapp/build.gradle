@@ -16,7 +16,7 @@ dependencies {
     compile "org.springframework.security:spring-security-web:$springSecurityVersion"
     compile "org.springframework.security:spring-security-config:$springSecurityVersion"
 
-    compile "com.unidev.platform.common:platform-j2ee:$unidevPlatformVersion"
+    compile "com.unidev.platform.j2ee:common:$unidevPlatformVersion"
 
     compile "org.jminix:jminix:1.2.0"
     compile "net.logstash.logback:logstash-logback-encoder:4.6"
