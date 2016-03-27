@@ -51,6 +51,8 @@
     </appender>
 
     <logger name="com.unidev" level="${log.level.unidev:-INFO}" />
+    <!-- a lot of mongodb deployments are in play so we moved generic configuration in template -->
+    <logger name="org.mongodb.driver" level="${log.level.mongodb:-ERROR}" />
 
     <root level="${log.level.root:-INFO}">
         <appender-ref ref="file" />
