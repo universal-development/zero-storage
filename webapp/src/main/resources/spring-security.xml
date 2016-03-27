@@ -5,7 +5,9 @@
     http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
 
+    <!-- TODO: move admin level paths to be handled in application server with dedicated password protection -->
     <http auto-config="true">
+        <csrf disabled="true"/>
         <intercept-url pattern="/admin/jmx/**" access="hasRole('ADMIN')" />
         <intercept-url pattern="/admin/build" access="hasRole('ADMIN')" />
         <intercept-url pattern="/admin/logs**" access="hasRole('ADMIN')" />
