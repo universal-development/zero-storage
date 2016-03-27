@@ -11,5 +11,22 @@
         Core beans definition, put there 'core' related stuff.
     </description>
 
+    <!--
+        Properties loading from classpath, environment variable and user home
+        -DENV=prod
+    -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath*:/application.properties</value>
+                <value>classpath*:/application.#{systemProperties['ENV']}.properties</value>
+                <value>file://${user.home}/${application.name}/application.properties</value>
+                <value>file://${user.home}/${application.name}/application.#{systemProperties['ENV']}.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <context:property-placeholder properties-ref="propertyConfigurer" ignore-resource-not-found="true" ignore-unresolvable="true" />
 
 </beans>
