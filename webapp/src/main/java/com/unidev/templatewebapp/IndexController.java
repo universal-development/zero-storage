@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class TestController {
+public class IndexController {
 
     @Autowired
     private Core core;
@@ -17,7 +17,7 @@ public class TestController {
 
         core.invokeMe();
 
-        return new ModelAndView("test");
+        return new ModelAndView("index");
     }
 
 }
