@@ -15,8 +15,9 @@
         Properties loading from classpath, environment variable and user home
         -DENV=prod
     -->
-    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+    <bean id="propertyConfigurer" class="com.unidev.platform.spring.common.PropertiesConfigurer">
         <property name="ignoreResourceNotFound" value="true"/>
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
         <property name="locations">
             <list>
                 <value>classpath*:/application.properties</value>
@@ -26,7 +27,5 @@
             </list>
         </property>
     </bean>
-
-    <context:property-placeholder properties-ref="propertyConfigurer" ignore-resource-not-found="true" ignore-unresolvable="true" />
 
 </beans>
