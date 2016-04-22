@@ -23,7 +23,12 @@
     <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${user.home}/${application.name}/logs/log.${ENV}.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${user.home}/${application.name}/logs/log.${ENV}.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+            <fileNamePattern>${user.home}/${application.name}/logs/log.${ENV}.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches 100MB -->
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
 
         <encoder>
@@ -39,7 +44,7 @@
         <file>${user.home}/${application.name}/logs/stash.${ENV}.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- rollover daily -->
-            <fileNamePattern>${user.home}/${application.name}/logs/stash.${ENV}.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+            <fileNamePattern>${user.home}/${application.name}/logs/stash.${ENV}.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy
                     class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <!-- or whenever the file size reaches 100MB -->
