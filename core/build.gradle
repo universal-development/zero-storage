@@ -1,7 +1,4 @@
-
-def unidevPlatformVersion = "2.0.0-SNAPSHOT"
-
 dependencies {
-    compile "com.unidev.platform.spring:common:$unidevPlatformVersion"
+    compile "com.unidev.platform.spring:common:$project.unidevPlatformVersion"
 }
 

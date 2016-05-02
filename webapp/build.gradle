@@ -1,22 +1,18 @@
 apply plugin: 'jetty'
 apply plugin: 'war'
 
-
-def springVersion = "4.2.5.RELEASE"
-def springSecurityVersion = "4.0.4.RELEASE"
-def unidevPlatformVersion = "2.0.0-SNAPSHOT"
-
 dependencies {
 
     compile project(":core")
 
-    compile "org.springframework:spring-webmvc:$springVersion"
-    compile "org.springframework:spring-context-support:$springVersion"
-
-    compile "org.springframework.security:spring-security-web:$springSecurityVersion"
-    compile "org.springframework.security:spring-security-config:$springSecurityVersion"
-
-    compile "com.unidev.platform.j2ee:common:$unidevPlatformVersion"
+    compile "com.unidev.platform.common:dto:$project.unidevPlatformVersion"
+    compile "com.unidev.platform.common:utils:$project.unidevPlatformVersion"
+    compile "com.unidev.platform.spring:common:$project.unidevPlatformVersion"
+    compile "com.unidev.platform.spring:mvc:$project.unidevPlatformVersion"
+    compile "com.unidev.platform.j2ee:common:$project.unidevPlatformVersion"
+    
+    compile "org.springframework.security:spring-security-web:$project.springSecurityVersion"
+    compile "org.springframework.security:spring-security-config:$project.springSecurityVersion"
 
     compile "org.jminix:jminix:1.2.0"
 
