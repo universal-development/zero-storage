@@ -5,11 +5,12 @@ dependencies {
 
     compile project(":core")
 
-    compile "com.unidev.platform.common:dto:$project.unidevPlatformVersion"
-    compile "com.unidev.platform.common:utils:$project.unidevPlatformVersion"
-    compile "com.unidev.platform.spring:common:$project.unidevPlatformVersion"
-    compile "com.unidev.platform.spring:mvc:$project.unidevPlatformVersion"
-    compile "com.unidev.platform.j2ee:common:$project.unidevPlatformVersion"
+    compile "com.unidev.platform:unidev-dto:$project.unidevPlatformVersion"
+    compile "com.unidev.platform:unidev-exception:$project.unidevPlatformVersion"
+    compile "com.unidev.platform:unidev-utils:$project.unidevPlatformVersion"
+    compile "com.unidev.platform:unidev-spring-common:$project.unidevPlatformVersion"
+    compile "com.unidev.platform:unidev-spring-mvc:$project.unidevPlatformVersion"
+    compile "com.unidev.platform:unidev-j2ee-common:$project.unidevPlatformVersion"
     
     compile "org.springframework.security:spring-security-web:$project.springSecurityVersion"
     compile "org.springframework.security:spring-security-config:$project.springSecurityVersion"
