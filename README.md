@@ -1,6 +1,15 @@
 # template-web-project
 Template web project application
 
+J2EE webapp with servlet 3.1, Spring 4.2.x : core, mvc, security
+
+Links
+=====
+
+/admin/jmx/ - JMinix administrative page
+/admin/build - build information page
+/admin/logs - Logs web interface
+
 License
 =======
  
