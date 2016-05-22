@@ -7,13 +7,15 @@ Links
 =====
 
 /admin/jmx/ - JMinix administrative page
+
 /admin/build - build information page
+
 /admin/logs - Logs web interface
 
 License
 =======
  
-    Copyright (c) 2015 Denis O <denis@universal-development.com>
+    Copyright (c) 2015, 2016 Denis O <denis@universal-development.com>
  
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
