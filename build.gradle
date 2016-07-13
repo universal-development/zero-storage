@@ -1,4 +1,4 @@
-project.ext.unidevPlatformVersion = "2.0.0-SNAPSHOT"
+project.ext.unidevPlatformVersion = "2.0.0"
 project.ext.springVersion = "4.2.5.RELEASE"
 project.ext.springSecurityVersion = "4.0.4.RELEASE"
 
