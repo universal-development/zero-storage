@@ -1,7 +1,6 @@
-# template-web-project
-Template web project application
+# Zero storage
+File based storage engine with HATEOAS based API
 
-J2EE webapp with servlet 3.1, Spring 4.2.x : core, mvc, security
 
 Links
 =====
@@ -15,7 +14,7 @@ Links
 License
 =======
  
-    Copyright (c) 2015, 2016 Denis O <denis@universal-development.com>
+    Copyright (c) 2016 Denis O <denis@universal-development.com>
  
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
