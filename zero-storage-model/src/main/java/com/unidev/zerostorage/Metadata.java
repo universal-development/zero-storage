@@ -12,11 +12,11 @@ public class Metadata extends HashMap<String, Object> {
      * @param key Metadata key
      * @return value by key or null
      */
-    public Object opt(String key) {
+    public <T> T opt(String key) {
         if (!super.containsKey(key)) {
             return null;
         }
-        return get(key);
+        return (T) get(key);
     }
 
 
