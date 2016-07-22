@@ -7,7 +7,7 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'idea'
 
-    group = 'com.unidev.app.templatewebapp'
+    group = 'com.unidev.zerostorage'
     version = '1.0.0-SNAPSHOT'
 
     apply from: 'http://dev.local/gradle/uploadArchivesSftp.groovy'

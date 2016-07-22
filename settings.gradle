@@ -1,2 +1,5 @@
-include "webapp"
-include "core"
+include "zero-storage-model"
+include "zero-storage-core"
+include "zero-storage-webapp"
+include "zero-storage-android-lib"
+
