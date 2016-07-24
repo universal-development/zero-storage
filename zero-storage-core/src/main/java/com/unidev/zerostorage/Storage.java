@@ -1,23 +1,24 @@
 package com.unidev.zerostorage;
 
-import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Storage file accessing service
  */
 public class Storage {
 
-    private File file;
+    private List<Metadata> metadata;
 
-    public Storage file(File file) {
-        this.file = file;
-        return this;
+    public Storage() {
+        metadata = new ArrayList<>();
     }
 
-
-    public Storage load() {
-        return null;
+    public List<Metadata> getMetadata() {
+        return metadata;
     }
 
-
+    public void setMetadata(List<Metadata> metadata) {
+        this.metadata = metadata;
+    }
 }
