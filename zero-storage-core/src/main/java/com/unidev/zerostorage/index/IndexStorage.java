@@ -14,7 +14,11 @@ import static com.unidev.zerostorage.StorageMapper.storageMapper;
 public class IndexStorage {
     public static final String INDEX_FILE = "index.json";
     public static final String FILE_EXT = ".json";
-    public static final int FIRST_INDEX = 1;
+
+    public static final Integer META_PER_STORAGE = 50;
+
+    public static final String META_COUNT = "meta_per_storage";
+    public static final String META_PER_STORAGE_KEY = "meta_per_storage";
 
     private File storageRoot;
     private File indexFile;
@@ -47,17 +51,29 @@ public class IndexStorage {
     }
 
     public IndexStorage addMetadata(Metadata metadata) {
-        if (metadata.isEmpty()) {
-            Storage storage = new Storage();
-            File metadataFile = new File(storageRoot, FIRST_INDEX + FILE_EXT);
-            storageMapper().saveSource(metadataFile).save(storage);
-
-            Metadata indexMetadata = new Metadata();
-            indexMetadata.setLink(metadataFile.getName());
-            indexMetadata.set_id(metadataFile.getName());
-            index.addMetadateFirst(indexMetadata);
-            save();
+        if (index.metadata().isEmpty()) {
+            addNextStorageFile();
         }
+
+        Integer itemPerPage = index.details().opt(META_PER_STORAGE_KEY, META_PER_STORAGE);
+        String storageFile = index.metadata().get(0).getLink();
+
+        return this;
+    }
+
+    private IndexStorage addNextStorageFile() {
+        int fileCount = index.metadata().size();
+        File metadataFile = new File(storageRoot, (fileCount + 1) + FILE_EXT);
+
+        Storage storage = new Storage();
+        storageMapper().saveSource(metadataFile).save(storage);
+
+        Metadata indexMetadata = new Metadata();
+        indexMetadata.setLink(metadataFile.getName());
+        indexMetadata.set_id(metadataFile.getName());
+        index.addMetadateFirst(indexMetadata);
+        save();
+
         return this;
     }
 
