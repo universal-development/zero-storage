@@ -8,10 +8,12 @@ import java.util.List;
  */
 public class Storage {
 
+    private Metadata details;
     private List<Metadata> metadata;
 
     public Storage() {
         metadata = new ArrayList<>();
+        details = new Metadata();
     }
 
     /**
@@ -24,7 +26,6 @@ public class Storage {
         return this;
     }
 
-
     /**
      * Add metadata record as first record in list
      * @param metadata
@@ -35,6 +36,9 @@ public class Storage {
         return this;
     }
 
+    public Metadata details() {
+        return this.details;
+    }
 
     public List<Metadata> metadata() {
         return this.metadata;
@@ -46,5 +50,13 @@ public class Storage {
 
     public void setMetadata(List<Metadata> metadata) {
         this.metadata = metadata;
+    }
+
+    public Metadata getDetails() {
+        return details;
+    }
+
+    public void setDetails(Metadata details) {
+        this.details = details;
     }
 }
