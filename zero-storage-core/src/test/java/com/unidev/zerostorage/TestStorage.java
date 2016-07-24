@@ -21,7 +21,7 @@ public class TestStorage {
 
         Metadata metadata = new Metadata();
         metadata.put("test", "test1");
-        storage.getMetadata().add(metadata);
+        storage.addMetadata(metadata);
 
         File tempFile = File.createTempFile("storage", ".json");
 
