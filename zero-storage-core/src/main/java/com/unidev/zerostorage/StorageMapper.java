@@ -24,6 +24,15 @@ public class StorageMapper {
         return this;
     }
 
+    public StorageMapper saveSource(File file) {
+        try {
+            this.saveSource = new FileOutputStream(file);
+        } catch (FileNotFoundException e) {
+            throw new StorageException(e);
+        }
+        return this;
+    }
+
     public StorageMapper loadSource(File file) {
         try {
             this.loadSource = new FileInputStream(file);
