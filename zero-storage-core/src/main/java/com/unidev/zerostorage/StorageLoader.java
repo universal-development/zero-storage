@@ -1,30 +1,39 @@
 package com.unidev.zerostorage;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Loader of storage file
  */
 public class StorageLoader {
 
-    private File file;
-
+    private InputStream inputStream;
 
     public StorageLoader() {}
 
-    public StorageLoader(File file) { this.file = file; }
+    public StorageLoader(InputStream inputStream) { this.inputStream  = inputStream; }
 
     public static StorageLoader storageLoader() {return new StorageLoader();}
 
-    public StorageLoader file(File file) {
-        this.file = file;
+    public StorageLoader source(InputStream inputStream) {
+        this.inputStream = inputStream;
         return this;
     }
 
+    public StorageLoader source(File file) {
+        try {
+            this.inputStream = new FileInputStream(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            throw new StorageException(e);
+        }
+        return this;
+    }
+
+
     public Storage load() {
         try {
-            return StorageUtils.STORAGE_OBJECT_MAPPER.readValue(file, Storage.class);
+            return StorageUtils.STORAGE_OBJECT_MAPPER.readValue(inputStream, Storage.class);
         } catch (IOException e) {
             e.printStackTrace();
             throw new StorageException(e);
