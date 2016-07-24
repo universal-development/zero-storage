@@ -1,4 +1,7 @@
 dependencies {
-    compile "com.unidev.platform:unidev-spring-common:$project.unidevPlatformVersion"
+    compile project(":zero-storage-model")
+    compile "com.unidev.platform:unidev-exception:$project.unidevPlatformVersion"
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.1'
+
 }
 
