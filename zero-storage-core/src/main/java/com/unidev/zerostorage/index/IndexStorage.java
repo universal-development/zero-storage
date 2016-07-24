@@ -1,4 +1,4 @@
-package com.unidev.zerostorage.com.unidev.zerostorage.index;
+package com.unidev.zerostorage.index;
 
 import com.unidev.zerostorage.Metadata;
 import com.unidev.zerostorage.Storage;
