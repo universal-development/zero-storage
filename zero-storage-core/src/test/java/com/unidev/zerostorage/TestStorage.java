@@ -20,10 +20,17 @@ public class TestStorage {
         Storage storage = new Storage();
 
         Metadata metadata = new Metadata();
+        metadata.set_id("Potato");
+        metadata.setLink("/resource/potato");
         metadata.put("test", "test1");
         storage.addMetadata(metadata);
 
+        Metadata metadata2 = new Metadata();
+        metadata2.put("test3", "test3");
+        storage.addMetadata(metadata2);
+
         File tempFile = File.createTempFile("storage", ".json");
+        tempFile.deleteOnExit();
 
         StorageMapper.storageMapper().saveSource(new FileOutputStream(tempFile)).save(storage);
 
