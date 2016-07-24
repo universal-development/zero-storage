@@ -19,6 +19,20 @@ public class Metadata extends HashMap<String, Object> {
         return (T) get(key);
     }
 
+    /**
+     * Return default by key, if value is missing, defaultValue is returned
+     * @param key
+     * @param defaultValue
+     * @param <T>
+     * @return
+     */
+    public <T> T opt(String key, T defaultValue) {
+        if (!super.containsKey(key)) {
+            return defaultValue;
+        }
+        return (T) get(key);
+    }
+
     public String link() {
         return opt("link");
     }
