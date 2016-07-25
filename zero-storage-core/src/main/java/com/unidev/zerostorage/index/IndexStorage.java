@@ -92,4 +92,17 @@ public class IndexStorage {
         return this;
     }
 
+    public IndexStorage index(Storage index) {
+        this.index = index;
+        return this;
+    }
+
+    public Storage getIndex() {
+        return this.index;
+    }
+
+    public void setIndex(Storage index) {
+        this.index = index;
+    }
+
 }
