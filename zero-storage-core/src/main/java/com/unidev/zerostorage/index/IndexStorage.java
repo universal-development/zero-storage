@@ -2,6 +2,7 @@ package com.unidev.zerostorage.index;
 
 import com.unidev.zerostorage.Metadata;
 import com.unidev.zerostorage.Storage;
+import com.unidev.zerostorage.StorageMapper;
 
 import java.io.File;
 import java.util.List;
@@ -17,7 +18,7 @@ public class IndexStorage {
 
     public static final Integer META_PER_STORAGE = 50;
 
-    public static final String META_COUNT = "meta_per_storage";
+    public static final String STORAGE_RECORDS_KEY = "storage_records_";
     public static final String META_PER_STORAGE_KEY = "meta_per_storage";
 
     private File storageRoot;
@@ -55,8 +56,22 @@ public class IndexStorage {
             addNextStorageFile();
         }
 
-        Integer itemPerPage = index.details().opt(META_PER_STORAGE_KEY, META_PER_STORAGE);
-        String storageFile = index.metadata().get(0).getLink();
+        Integer recordsPerStorage = index.details().opt(META_PER_STORAGE_KEY, META_PER_STORAGE);
+        String storageFileName = index.metadata().get(0).getLink();
+        int recordCount = index.details().opt(STORAGE_RECORDS_KEY + storageFileName, 0);
+
+        if (recordCount >= recordsPerStorage) {
+            addNextStorageFile();
+            storageFileName = index.metadata().get(0).getLink();
+        }
+
+        File storageFile = new File(storageRoot, storageFileName);
+        StorageMapper storageMapper = storageMapper().loadSource(storageFile).saveSource(storageFile);
+        Storage storage = storageMapper.load();
+        storage.addMetadateFirst(metadata);
+        storageMapper.save(storage);
+
+        index.details().put(STORAGE_RECORDS_KEY + storageFileName, storage.metadata().size());
 
         return this;
     }
