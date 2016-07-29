@@ -6,6 +6,9 @@ import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
 
 /**
  * Storage index tests
@@ -43,6 +46,19 @@ public class TestIndexStorage {
         indexStorage.storageRoot(root);
         indexStorage.save();
 
+    }
+
+    @Test
+    public void testLoadIndexStorage() throws IOException {
+        InputStream inputStream = TestStorage.class.getResourceAsStream("/blankIndex.json");
+        File root = folder.getRoot();
+
+        File index = new File(root, IndexStorage.INDEX_FILE);
+        Files.copy(inputStream, index.toPath());
+
+        IndexStorage indexStorage = new IndexStorage();
+        indexStorage.storageRoot(root);
+        indexStorage.load();
     }
 
 }
