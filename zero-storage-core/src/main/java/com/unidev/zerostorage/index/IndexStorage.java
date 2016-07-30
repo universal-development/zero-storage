@@ -97,6 +97,10 @@ public class IndexStorage {
         return this;
     }
 
+    public Storage index() {
+        return index;
+    }
+
     public Storage getIndex() {
         return this.index;
     }

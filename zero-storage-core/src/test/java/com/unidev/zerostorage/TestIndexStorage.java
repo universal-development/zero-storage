@@ -10,6 +10,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
+
 /**
  * Storage index tests
  */
@@ -49,7 +52,7 @@ public class TestIndexStorage {
     }
 
     @Test
-    public void testLoadIndexStorage() throws IOException {
+    public void testLoadEmptyIndexStorage() throws IOException {
         InputStream inputStream = TestStorage.class.getResourceAsStream("/blankIndex.json");
         File root = folder.getRoot();
 
@@ -59,6 +62,34 @@ public class TestIndexStorage {
         IndexStorage indexStorage = new IndexStorage();
         indexStorage.storageRoot(root);
         indexStorage.load();
+    }
+
+    @Test
+    public void testSaveLoadIndexStorage() {
+
+        IndexStorage indexStorage = new IndexStorage();
+
+        Storage index = new Storage();
+        index.details().put("Potato", "Tomato");
+        index.details().put("Tomato", null);
+        indexStorage.index(index);
+
+        File root = folder.getRoot();
+
+        indexStorage.storageRoot(root);
+        indexStorage.save();
+
+        IndexStorage storageToLoad = new IndexStorage();
+        storageToLoad.storageRoot(root);
+        storageToLoad.load();
+
+        Storage loadedIndex = storageToLoad.index();
+        assertThat(loadedIndex, is(not(nullValue())));
+        assertThat(loadedIndex.details(), is(not(nullValue())));
+
+        assertThat(loadedIndex.details().opt("Potato"), is("Tomato"));
+
+
     }
 
 }
