@@ -7,6 +7,8 @@ import java.util.HashMap;
  */
 public class Metadata extends HashMap<String, Object> {
 
+    public static Metadata newMetadata() {return new Metadata(); }
+
     /**
      * Fetch metadata by key, if value is missing, null is returned
      * @param key Metadata key
@@ -37,9 +39,21 @@ public class Metadata extends HashMap<String, Object> {
         return opt("link");
     }
 
-    private String _id() {
+    public String _id() {
         return opt("_id");
     }
+
+    public Metadata _id(String id) {
+        put("_id", id);
+        return this;
+    }
+
+    public Metadata link(String link) {
+        put("link", link);
+        return this;
+    }
+
+
 
     public String get_id() {
         return opt("_id");
