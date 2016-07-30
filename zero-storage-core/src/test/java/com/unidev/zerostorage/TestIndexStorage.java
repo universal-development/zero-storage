@@ -13,6 +13,8 @@ import java.nio.file.Files;
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
 
+import static com.unidev.zerostorage.Metadata.*;
+
 /**
  * Storage index tests
  */
@@ -88,6 +90,26 @@ public class TestIndexStorage {
         assertThat(loadedIndex.details(), is(not(nullValue())));
 
         assertThat(loadedIndex.details().opt("Potato"), is("Tomato"));
+    }
+
+    @Test
+    public void testIndexMetadataManagement() throws IOException {
+        IndexStorage indexStorage = new IndexStorage();
+//        File root = new File("/tmp/111");
+//        root.mkdirs();
+        File root = folder.getRoot();
+        indexStorage.storageRoot(root);
+        indexStorage.index().details().put(IndexStorage.META_PER_STORAGE_KEY, 10);
+
+        for(int i = 0;i<13;i++) {
+            Metadata meta = newMetadata();
+            meta._id("id_" + i);
+            indexStorage.addMetadata(meta);
+        }
+
+        IndexStorage loadStorage = new IndexStorage().storageRoot(root).load();
+        assertThat(loadStorage.index(), is(not(nullValue())));
+        assertThat(loadStorage.index().metadata().size(), is(2)); // 13 records should be stored in 2 files: 10 + 3
 
 
     }
