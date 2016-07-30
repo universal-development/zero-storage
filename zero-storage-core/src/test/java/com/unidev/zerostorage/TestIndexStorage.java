@@ -108,8 +108,8 @@ public class TestIndexStorage {
         }
 
         IndexStorage loadStorage = new IndexStorage().storageRoot(root).load();
-        assertThat(loadStorage.index(), is(not(nullValue())));
-        assertThat(loadStorage.index().metadata().size(), is(2)); // 13 records should be stored in 2 files: 10 + 3
+        assertThat(loadStorage.storageFiles(), is(not(nullValue())));
+        assertThat(loadStorage.storageFiles().size(), is(2)); // 13 records should be stored in 2 files: 10 + 3
 
 
     }
