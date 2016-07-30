@@ -2,6 +2,7 @@ package com.unidev.zerostorage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Storage file accessing service
@@ -31,9 +32,13 @@ public class Storage {
      * @param metadata
      * @return
      */
-    public Storage addMetadateFirst(Metadata metadata) {
+    public Storage addMetadataFirst(Metadata metadata) {
         this.metadata.add(0, metadata);
         return this;
+    }
+
+    public Optional<Metadata> fetchMetaById(String id) {
+        return metadata.stream().filter( meta -> id.equals(meta._id())).findFirst();
     }
 
     public Metadata details() {
