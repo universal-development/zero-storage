@@ -2,7 +2,6 @@ package com.unidev.zerostorage.index;
 
 import com.unidev.zerostorage.Metadata;
 import com.unidev.zerostorage.Storage;
-import com.unidev.zerostorage.StorageMapper;
 
 import java.io.File;
 import java.util.List;
@@ -10,7 +9,9 @@ import java.util.List;
 import static com.unidev.zerostorage.StorageMapper.storageMapper;
 
 /**
- * Storage index file
+ * Index storage for metadata files <br/>
+ * Index manage index.json file which have links to rest of the storages
+ *
  */
 public class IndexStorage {
     public static final String INDEX_FILE = "index.json";
@@ -26,6 +27,7 @@ public class IndexStorage {
     private Storage index;
 
     public IndexStorage() {
+        index = new Storage();
     }
 
     public IndexStorage load() {
@@ -66,10 +68,9 @@ public class IndexStorage {
         }
 
         File storageFile = new File(storageRoot, storageFileName);
-        StorageMapper storageMapper = storageMapper().loadSource(storageFile).saveSource(storageFile);
-        Storage storage = storageMapper.load();
+        Storage storage = storageMapper().loadSource(storageFile).load();
         storage.addMetadateFirst(metadata);
-        storageMapper.save(storage);
+        storageMapper().saveSource(storageFile).save(storage);
 
         index.details().put(STORAGE_RECORDS_KEY + storageFileName, storage.metadata().size());
 
