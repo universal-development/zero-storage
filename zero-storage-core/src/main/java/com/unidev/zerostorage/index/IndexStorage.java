@@ -73,6 +73,7 @@ public class IndexStorage {
         storageMapper().saveSource(storageFile).save(storage);
 
         index.details().put(STORAGE_RECORDS_KEY + storageFileName, storage.metadata().size());
+        save();
 
         return this;
     }
