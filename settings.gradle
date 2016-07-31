@@ -1,5 +1,5 @@
 include "zulu-storage-model"
 include "zulu-storage-core"
 include "zulu-storage-backend"
-include "zulu-storage-android-lib"
+include "zulu-storage-android-core"
 
