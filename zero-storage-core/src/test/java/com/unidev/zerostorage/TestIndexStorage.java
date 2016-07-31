@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
@@ -111,7 +112,13 @@ public class TestIndexStorage {
         assertThat(loadStorage.storageFiles(), is(not(nullValue())));
         assertThat(loadStorage.storageFiles().size(), is(2)); // 13 records should be stored in 2 files: 10 + 3
 
+        String id = loadStorage.storageFiles().get(1)._id();
+        Optional<Storage> storage = loadStorage.storage(id);
+        assertThat(storage.isPresent(), is(true));
 
+        Storage storageEntity = storage.get();
+
+        assertThat(storageEntity.metadata().size(), is(10));
     }
 
 }
