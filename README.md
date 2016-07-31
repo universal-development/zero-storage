@@ -2,12 +2,17 @@
 File based storage engine which use JSON based files for storing data
 
 Modules
+=======
+
  zulu-storage-model -  model project for plain POJOs
+
  zulu-storage-core - core classes for zulu storage
 
+ zulu-storage-backend - backend service for serving storage records
 
-Links
-=====
+
+Backend links
+=============
 
 /admin/jmx/ - JMinix administrative page
 
