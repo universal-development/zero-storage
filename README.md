@@ -1,5 +1,9 @@
-# Zero storage
-File based storage engine with HATEOAS based API
+# Zulu storage
+File based storage engine which use JSON based files for storing data
+
+Modules
+ zulu-storage-model -  model project for plain POJOs
+ zulu-storage-core - core classes for zulu storage
 
 
 Links

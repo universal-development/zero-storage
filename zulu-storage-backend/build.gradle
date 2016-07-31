@@ -1,0 +1,57 @@
+apply plugin: 'jetty'
+apply plugin: 'war'
+
+dependencies {
+
+    compile project(":zulu-storage-core")
+
+    compile "com.unidev.platform:unidev-dto:$project.unidevPlatformVersion"
+    compile "com.unidev.platform:unidev-exception:$project.unidevPlatformVersion"
+    compile "com.unidev.platform:unidev-utils:$project.unidevPlatformVersion"
+    compile "com.unidev.platform:unidev-spring-common:$project.unidevPlatformVersion"
+    compile "com.unidev.platform:unidev-spring-mvc:$project.unidevPlatformVersion"
+    compile "com.unidev.platform:unidev-j2ee-common:$project.unidevPlatformVersion"
+    
+    compile "org.springframework.security:spring-security-web:$project.springSecurityVersion"
+    compile "org.springframework.security:spring-security-config:$project.springSecurityVersion"
+
+    compile "org.jminix:jminix:1.2.0"
+
+    compile "net.logstash.logback:logstash-logback-encoder:4.6"
+    compile "ch.qos.logback:logback-classic:1.1.3"
+}
+
+repositories {
+    maven { url 'http://maven.restlet.org' }
+}
+
+jettyRun {
+    httpPort = 8080
+    contextPath = '/'
+    daemon = false
+}
+
+jettyRunWar {
+    httpPort = 8080
+    contextPath = '/'
+    daemon = false
+}
+
+[jettyRun, jettyRunWar, jettyStop]*.stopPort = 8081
+[jettyRun, jettyRunWar, jettyStop]*.stopKey = 'stopKey'
+
+import org.apache.tools.ant.filters.*
+war {
+    eachFile {
+        if (it.name == 'build.jsp') {
+            it.filter(ReplaceTokens, tokens: [
+                    'build_id' : System.getProperty("BUILD_ID") + "",
+                    'git_commit' : System.getProperty("GIT_COMMIT") + "",
+                    'build_number' : System.getProperty("BUILD_NUMBER") + "",
+                    'version' : project.version,
+                    'name' : project.name,
+                    'group' : project.group,
+            ])
+        }
+    }
+}
