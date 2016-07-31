@@ -9,6 +9,8 @@ public class Metadata extends HashMap<String, Object> {
 
     public static Metadata newMetadata() {return new Metadata(); }
 
+    public static Metadata newMetadata(String id) {return new Metadata()._id(id);}
+
     /**
      * Fetch metadata by key, if value is missing, null is returned
      * @param key Metadata key
