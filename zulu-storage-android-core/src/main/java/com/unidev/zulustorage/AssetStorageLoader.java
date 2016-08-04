@@ -18,8 +18,9 @@ public class AssetStorageLoader {
 
     /**
      * Load storage from application assets
-     * @param path
-     * @return
+     * @param path Asset path to storage file
+     * @return Loaded storage
+     * @throws StorageException if something crashed in loading storage
      */
     public static Storage load(Context context, String path) {
         AssetManager assets = context.getAssets();
@@ -28,7 +29,7 @@ public class AssetStorageLoader {
         } catch (IOException e) {
             Log.e("AssetStorageLoader", "Failed to load storage from " + path);
             e.printStackTrace();
-            throw new CommonRuntimeException(e);
+            throw new StorageException(e);
         }
     }
 
