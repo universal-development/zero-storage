@@ -3,6 +3,7 @@ package com.unidev.zulustorage;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.util.Log;
+import com.unidev.platform.common.exception.CommonRuntimeException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,7 +17,7 @@ import static com.unidev.zulustorage.StorageMapper.*;
 public class AssetStorageLoader {
 
     /**
-     * Load
+     * Load storage from application assets
      * @param path
      * @return
      */
@@ -27,6 +28,7 @@ public class AssetStorageLoader {
         } catch (IOException e) {
             Log.e("AssetStorageLoader", "Failed to load storage from " + path);
             e.printStackTrace();
+            throw new CommonRuntimeException(e);
         }
     }
 
