@@ -3,7 +3,6 @@ package com.unidev.zulustorage;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.util.Log;
-import com.unidev.platform.common.exception.CommonRuntimeException;
 
 import java.io.IOException;
 import java.io.InputStream;
