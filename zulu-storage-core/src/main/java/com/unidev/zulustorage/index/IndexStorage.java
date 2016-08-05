@@ -4,6 +4,7 @@ import com.unidev.zulustorage.Metadata;
 import com.unidev.zulustorage.Storage;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,7 +15,10 @@ import static com.unidev.zulustorage.StorageMapper.storageMapper;
  * Index manage index.json file which have links to rest of the storages
  *
  */
-public class IndexStorage {
+public class IndexStorage implements Serializable {
+
+    private static final long serialVersionUID = 362498820763181265L;
+
     public static final String INDEX_FILE = "index.json";
     public static final String FILE_EXT = ".json";
 

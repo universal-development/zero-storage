@@ -1,5 +1,6 @@
 package com.unidev.zulustorage;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -7,7 +8,9 @@ import java.util.Optional;
 /**
  * Storage file accessing service
  */
-public class Storage {
+public class Storage implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private Metadata details;
     private List<Metadata> metadata;
