@@ -27,11 +27,11 @@ public class TestMetadata {
         metadata.put("kappa", "kappa123");
         metadata.link("tomato-link");
 
-        assertThat(metadata.opt("kappa"), is("kappa123"));
+        assertThat((String)metadata.opt("kappa"), is("kappa123"));
         assertThat(metadata.opt("tomato"), is(nullValue()));
         assertThat(metadata.opt("tomat", "defaultTomato"), is("defaultTomato"));
 
-        assertThat(metadata.get("kappa"), is("kappa123"));
+        assertThat((String)metadata.get("kappa"), is("kappa123"));
         assertThat(metadata.get("kappa123"), is(nullValue()));
 
         assertThat(metadata.link(), is("tomato-link"));
