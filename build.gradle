@@ -19,7 +19,7 @@ subprojects {
 
 }
 
-configure(subprojects - project(":zulu-storage-android-core")) {
+configure(subprojects - project(":zulu-storage-android-core") - project(":zulu-storage-model")) {
     apply plugin: 'java'
     apply plugin: 'maven'
     apply plugin: 'idea'
